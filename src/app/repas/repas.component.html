@@ -1,3 +1,64 @@
-<p>
-  Page Repas under construction !!
-</p>
+<p> Page Repas under construction !! </p>
+<form action="" id="cg_form" oninput="cg.value= (ig.value * (glucides.value* portion.value)/100)/100; return false">
+	
+	<!-- <a href="javascript:addRow('tableau');">Add aliment</a> -->
+	<a href="javascript: addRow()">Add Row</a>
+  <table id="tableau">
+    <thead>
+      <tr>
+        <th>Aliments</th>
+        <th>IG</th>
+        <th>Portion (en gr)</th>
+        <th>Glucides</th>
+        <th>CG</th>
+        <th>Energie</th>
+        <th>Protéines </th>
+        <th>Lipides</th>
+        <th>Commentaires</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <input type="text" name="AlimentName" value="">
+        </td>
+        <td>
+          <label for="ig">IG</label>
+          <input type="number" name="ig" id="ig" step="0.01" min="0"> 
+        </td>
+        <td>
+          <label for="portion">portion</label>
+          <input type="number" name="portion" id="portion" step="0.01" min="0"> 
+        </td>
+        <td>
+          <label for="glucides">Glucides</label>
+          <input type="number" name="glucides" id="glucides" step="0.01" min="0"> 
+        </td>
+        <td>
+          <label></label>
+          <!-- <input type="submit">  -->
+          <output for="ig portion glucides" name="cg"> </output>
+        </td>
+        <td>
+          <input type="text" name="Energie" value="">
+        </td>
+        <td>
+          <input type="text" name="Proteines" value="">
+        </td>
+        <td>
+          <input type="text" name="Lipides" value="">
+        </td>
+        <td>
+          <input type="text" name="Commentaires" value="">
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+</form>
+
+
+
