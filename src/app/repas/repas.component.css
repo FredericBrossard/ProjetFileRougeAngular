@@ -5,10 +5,22 @@ table {
   
   .mat-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 10%;
   }
   
   form
   {
   display:inline;
   }
+
+.autoCompletion {
+  width: 90%;
+}
+
+.coin {
+  
+  border:1px solid black; 
+   
+  }
+
+  

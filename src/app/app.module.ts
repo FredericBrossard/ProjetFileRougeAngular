@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
-import { MatToolbarModule, MatCardModule,    } from '@angular/material';
 import {FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,7 +16,11 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { Page404Component } from './page404/page404.component';
+import { MatChipsModule } from '@angular/material';
 
+// tslint:disable-next-line:max-line-length
+import { MatToolbarModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -52,6 +55,8 @@ component: Page404Component  }
 ];
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +70,10 @@ component: Page404Component  }
     ConnexionComponent,
     ProfilComponent,
     Page404Component
-  ],
+      ],
+
+
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -73,7 +81,14 @@ component: Page404Component  }
     FlexLayoutModule,
     MatCardModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatChipsModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

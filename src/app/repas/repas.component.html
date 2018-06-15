@@ -1,9 +1,22 @@
 <p> Page Repas under construction !! </p>
+
+<mat-form-field>
+		<mat-select placeholder="Saisir le type de repas">
+			<mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
+				{{ typem.viewValue }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+<br>
+
+ 
+
+
 <form action="" id="cg_form" oninput="cg.value= (ig.value * (glucides.value* portion.value)/100)/100; return false">
 	
-	<!-- <a href="javascript:addRow('tableau');">Add aliment</a> -->
-	<a href="javascript: addRow()">Add Row</a>
-  <table id="tableau">
+	
+   <table id="tableau" >
     <thead>
       <tr>
         <th>Aliments</th>
@@ -19,26 +32,38 @@
     </thead>
 
     <tbody>
-      <tr>
+      <tr id ="rowToClone">
         <td>
-          <input type="text" name="AlimentName" value="">
+						<form [formGroup]="stateForm">
+								<mat-form-field class="autoCompletion">
+									<input matInput type="text" matInput placeholder="States Group" formControlName="stateGroup" required [matAutocomplete]="autoGroup"/>
+										<mat-autocomplete #autoGroup="matAutocomplete">
+											<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+												<mat-option *ngFor="let name of group.names" [value]="name">
+													{{ name }}
+												</mat-option>
+										</mat-optgroup>
+									</mat-autocomplete>
+								</mat-form-field> 
+							</form> 
+          <!-- <input type="text" name="AlimentName" value=""> -->
         </td>
-        <td>
-          <label for="ig">IG</label>
+        <td >
+          <label for="ig"></label>
           <input type="number" name="ig" id="ig" step="0.01" min="0"> 
         </td>
         <td>
-          <label for="portion">portion</label>
+          <label for="portion"></label>
           <input type="number" name="portion" id="portion" step="0.01" min="0"> 
         </td>
         <td>
-          <label for="glucides">Glucides</label>
+          <label for="glucides"></label>
           <input type="number" name="glucides" id="glucides" step="0.01" min="0"> 
         </td>
-        <td>
-          <label></label>
+        <td class="coin">
+          <label class="coin"></label>
           <!-- <input type="submit">  -->
-          <output for="ig portion glucides" name="cg"> </output>
+								<output for="ig portion glucides" name="cg" class="coin"> </output>
         </td>
         <td>
           <input type="text" name="Energie" value="">
@@ -52,6 +77,8 @@
         <td>
           <input type="text" name="Commentaires" value="">
         </td>
+				<td><input type="button" value="Delete" onclick="deleteRow(this)"></td>
+
 
       </tr>
 
@@ -59,6 +86,8 @@
 
   </table>
 </form>
+<button mat-button (click)="cloneRow();">Add row !</button>
 
 
 
+	
