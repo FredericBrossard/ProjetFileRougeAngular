@@ -1,6 +1,11 @@
 .titre{
     font-style: italic;
     font-style: bold;
-    color: #2EAAAB
+    color: #2EAAAB;
+    margin-top: 5px;
+   }
 
-}
+   .toolbar{
+    background-image: url("/assets/images/toolbar.jpg");
+    height: 140px;
+      }

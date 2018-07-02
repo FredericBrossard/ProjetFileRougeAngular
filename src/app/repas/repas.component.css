@@ -1,26 +1,61 @@
-/* Structure */
-table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 10%;
-  }
-  
-  form
-  {
-  display:inline;
-  }
-
-.autoCompletion {
-  width: 90%;
+.center {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  color: rgb(46, 236, 46);
 }
 
-.coin {
-  
-  border:1px solid black; 
-   
-  }
 
-  
+#typeRepas {
+  display: flex;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+}
+
+/* Structure */
+
+table {
+  /* width: 100%; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+mat-form-field {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+form {
+  display: inline;
+}
+
+/* .autoCompletion {
+  width: 90%;
+} */
+
+.coin {
+  border: 0.5px solid grey;
+  background: papayawhip;
+ 
+}
+
+/* .comment {
+ overflow: auto;
+} */
+
+/* .large {
+  width: 50%;
+}
+
+.small {
+  width:auto;
+} */

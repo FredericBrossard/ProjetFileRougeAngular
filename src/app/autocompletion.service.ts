@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StateGroup  } from './state_group';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -10,9 +11,11 @@ import { StateGroup  } from './state_group';
 
 export class AutocompletionService {
 
-  constructor() {
-this.selectedState = this.stateGroups[0];
-}
+  // constructor() {
+  constructor(private httpClient: HttpClient) {
+   // this.selectedState = this.stateGroups[0];
+  this.httpClient.get('http://localhost:8090/Foods');
+  }
 
 public selectedState: StateGroup;
 

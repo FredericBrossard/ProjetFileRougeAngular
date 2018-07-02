@@ -25,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/repas', pathMatch: 'full' },
+  { path: '',
+   redirectTo: 'repas', pathMatch: 'full' },
    {
     path: 'repas',
     component: RepasComponent

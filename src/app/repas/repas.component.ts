@@ -31,9 +31,6 @@ export class RepasComponent implements OnInit {
   constructor(public menuService: MenuService, public autocompletionService: AutocompletionService, private fb: FormBuilder) { }
 
 
-
-
-
  cloneRow() {
     const row = document.getElementById('rowToClone'); // find row to copy
     const table = document.getElementById('tableau'); // find table to append to
@@ -42,10 +39,9 @@ export class RepasComponent implements OnInit {
     table.appendChild(clone); // add new row to end of table
   }
 
- deleteRow(r) {
-    const i = r.parentNode.parentNode.rowIndex;
-    // document.getElementById('tableau').deleteRow(i);
-}
+
+
+
 
 
 

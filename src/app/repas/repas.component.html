@@ -1,93 +1,104 @@
-<p> Page Repas under construction !! </p>
+<div class="center" >
+  <p > !! Page Repas under construction !! </p>
+</div>
 
+<div id="typeRepas">
+<div><h4>Votre type de repas</h4></div>
+<div>
 <mat-form-field>
-		<mat-select placeholder="Saisir le type de repas">
-			<mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
-				{{ typem.viewValue }}
-			</mat-option>
-		</mat-select>
-	</mat-form-field>
+  <mat-select placeholder="Saisir le type de repas">
+    <mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
+      {{ typem.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+</div>
 
-<br>
 
- 
 
 
 <form action="" id="cg_form" oninput="cg.value= (ig.value * (glucides.value* portion.value)/100)/100; return false">
-	
-	
-   <table id="tableau" >
+
+
+  <table id="tableau">
     <thead>
       <tr>
-        <th>Aliments</th>
-        <th>IG</th>
-        <th>Portion (en gr)</th>
-        <th>Glucides</th>
-        <th>CG</th>
-        <th>Energie</th>
-        <th>Protéines </th>
-        <th>Lipides</th>
-        <th>Commentaires</th>
+        <th class="large">Aliments</th>
+        <th class="small">IG</th>
+        <th class="small">Portion <br> (en gr)</th>
+        <th class="small">Glucides</th>
+        <th class="small">CG</th>
+        <th class="small">Energie</th>
+        <th class="small">Protéines </th>
+        <th class="small">Lipides</th>
+        <th class="large">Commentaires</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr id ="rowToClone">
-        <td>
-						<form [formGroup]="stateForm">
-								<mat-form-field class="autoCompletion">
-									<input matInput type="text" matInput placeholder="States Group" formControlName="stateGroup" required [matAutocomplete]="autoGroup"/>
-										<mat-autocomplete #autoGroup="matAutocomplete">
-											<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-												<mat-option *ngFor="let name of group.names" [value]="name">
-													{{ name }}
-												</mat-option>
-										</mat-optgroup>
-									</mat-autocomplete>
-								</mat-form-field> 
-							</form> 
+      <tr  id="rowToClone">
+        <td class="large">
+          <form [formGroup]="stateForm">
+            <mat-form-field class="autoCompletion">
+              <input matInput type="text" matInput placeholder="Sélectionner votre aliment" formControlName="stateGroup" required [matAutocomplete]="autoGroup"/>
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{ name }}
+                  </mat-option>
+                </mat-optgroup>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
           <!-- <input type="text" name="AlimentName" value=""> -->
         </td>
-        <td >
+        <td class="small">
           <label for="ig"></label>
-          <input type="number" name="ig" id="ig" step="0.01" min="0"> 
+          <input type="number" name="ig" id="ig" step="0.01" min="0">
         </td>
-        <td>
+        <td class="small">
           <label for="portion"></label>
-          <input type="number" name="portion" id="portion" step="0.01" min="0"> 
+          <input type="number" name="portion" id="portion" step="0.01" min="0">
         </td>
-        <td>
+        <td class="small">
           <label for="glucides"></label>
-          <input type="number" name="glucides" id="glucides" step="0.01" min="0"> 
+          <input type="number" name="glucides" id="glucides" step="0.01" min="0">
         </td>
         <td class="coin">
-          <label class="coin"></label>
+          <label></label>
           <!-- <input type="submit">  -->
-								<output for="ig portion glucides" name="cg" class="coin"> </output>
+          <output  for="ig portion glucides" name="cg"> </output>
         </td>
-        <td>
+        <td class="small">
           <input type="text" name="Energie" value="">
         </td>
-        <td>
+        <td class="small">
           <input type="text" name="Proteines" value="">
         </td>
-        <td>
+        <td class="small">
           <input type="text" name="Lipides" value="">
         </td>
-        <td>
+        <td class="comment" class="large">
           <input type="text" name="Commentaires" value="">
         </td>
-				<td><input type="button" value="Delete" onclick="deleteRow(this)"></td>
-
-
+        <td>
+          <td class="col-sm-2"><a class="deleteRow"></a>
+        </td>
       </tr>
-
     </tbody>
+    <!-- <tfoot>
+      <tr>
+          <td colspan="5" style="text-align: left;">
+              <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+          </td>
+      </tr>
+     
+  </tfoot> -->
 
   </table>
 </form>
-<button mat-button (click)="cloneRow();">Add row !</button>
+<button class="btn btn-sm btn-success" mat-button (click)="cloneRow();">Add a food</button>
 
 
 
-	
