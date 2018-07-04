@@ -1,3 +1,4 @@
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,11 +17,17 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { Page404Component } from './page404/page404.component';
-import { MatChipsModule } from '@angular/material';
+import { MatChipsModule, MatTableModule } from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+
+
+
+
 
 // tslint:disable-next-line:max-line-length
 import { MatToolbarModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -70,8 +77,8 @@ component: Page404Component  }
     HistoriqueComponent,
     ConnexionComponent,
     ProfilComponent,
-    Page404Component
-      ],
+    Page404Component,
+              ],
 
 
 
@@ -89,8 +96,12 @@ component: Page404Component  }
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatTableModule,
+    MatButtonModule,
+    Ng2SmartTableModule,
+        ],
   providers: [],
   bootstrap: [AppComponent]
 })

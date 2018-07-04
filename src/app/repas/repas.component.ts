@@ -9,6 +9,8 @@ import {StateGroup } from './../state_group';
 
 
 
+
+
 @Component({
   selector: 'app-repas',
   templateUrl: './repas.component.html',
@@ -31,13 +33,14 @@ export class RepasComponent implements OnInit {
   constructor(public menuService: MenuService, public autocompletionService: AutocompletionService, private fb: FormBuilder) { }
 
 
- cloneRow() {
-    const row = document.getElementById('rowToClone'); // find row to copy
-    const table = document.getElementById('tableau'); // find table to append to
-    const clone = row.cloneNode(true); // copy children too
-    // clone.id = 'newID'; // change id or other attributes/contents
-    table.appendChild(clone); // add new row to end of table
-  }
+
+//  cloneRow() {
+//     const row = document.getElementById('rowToClone'); // find row to copy
+//     const table = document.getElementById('tableau'); // find table to append to
+//     const clone = row.cloneNode(true); // copy children too
+//     // clone.id = 'newID'; // change id or other attributes/contents
+//     table.appendChild(clone); // add new row to end of table
+//   }
 
 
 
@@ -52,8 +55,20 @@ export class RepasComponent implements OnInit {
         startWith(''),
         map(val => this.filterGroup(val))
       );
-}
 
+      this.row.push({
+        id: '',
+        name: '',
+       age: ''
+     });
+}
+// tslint:disable-next-line:member-ordering
+public row: any = [{}];
+
+// Add New Row
+addRow() {
+  this.row.push({});
+}
 
  // constructor(private fb: FormBuilder) { }
  filterGroup(val: string): StateGroup[] {

@@ -1,70 +1,120 @@
-<!-- <p>
-    Page Aliments under construction !!
-</p> -->
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="jquery.js"></script>     <!-- Librairie jQuery -->
-<script src="my-script.js"></script>  <!-- Mon code -->
-<!------ Include the above in your HEAD tag ---------->
-
-<script>
-  var room = 1;
-function education_fields() {
- 
-    room++;
-    var objTo = document.getElementById('education_fields')
-    var divtest = document.createElement("div");
-	divtest.setAttribute("class", "form-group removeclass"+room);
-	var rdiv = 'removeclass'+room;
-    divtest.innerHTML = '<div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree"></div></div><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group"> <select class="form-control" id="educationDate" name="educationDate[]"><option value="">Date</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option> </select><div class="input-group-btn"> <button class="btn btn-danger" type="button" onclick="remove_education_fields('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div>';
-    
-    objTo.appendChild(divtest)
-}
-   function remove_education_fields(rid) {
-	   $('.removeclass'+rid).remove();
-   }
-</script>
-
-<div id="education_fields">  </div>
-       <div class="col-sm-3 nopadding">
-  <div class="form-group">
-    <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name">
-  </div>
-</div>
-<div class="col-sm-3 nopadding">
-  <div class="form-group">
-    <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major">
-  </div>
-</div>
-<div class="col-sm-3 nopadding">
-  <div class="form-group">
-    <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree">
-  </div>
-</div>
-
-
-<button click="education_fields()">TEST CLICK</button>
-
-
-<div class="col-sm-3 nopadding">
-  <div class="form-group">
-    <div class="input-group">
-      <select class="form-control" id="educationDate" name="educationDate[]">
-      
-        <option value="">Date</option>
-        <option value="2015">2015</option>
-        <option value="2016">2016</option>
-        <option value="2017">2017</option>
-        <option value="2018">2018</option>
-      </select>
-      <div class="input-group-btn">
-        <button class="btn btn-success" type="button"  onclick="education_fields()"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
-       
-      </div>
+<!-- <div class="container-fluid">
+  <div class="row justify-content-md-left">
+    <div class="content with-margin">
+      <button type="button" (click)="addRow()" class="btn btn-dark">Enregistrer le Repas</button>
     </div>
   </div>
+
+
+  <div id="typeRepas">
+        <div><h5>Votre type de repas</h5></div>
+        <div>
+        <mat-form-field>
+          <mat-select placeholder="Saisir le type de repas">
+            <mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
+              {{ typem.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        </div>
+        </div> -->
+
+  <!-- <div class="row" id="typeRepas">
+    <div class="col .mr-auto">
+      <div class="content with-margin">
+        <mat-card>
+          <mat-select placeholder="Saisir votre type de repas">
+            <mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
+              {{ typem.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-card>
+      </div>
+    </div>
+
+  </div> -->
+<!-- </div> -->
+
+
+
+
+
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+  <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+
+  <!-- Name Column -->
+  <!-- <ng-container matColumnDef="nameFood">
+    <th mat-header-cell *matHeaderCellDef> Aliments </th>
+    <td mat-cell *matCellDef="let element"> {{element.nameFood}} </td>
+  </ng-container> -->
+
+  <!-- Weight Column -->
+  <!-- <ng-container matColumnDef="ig">
+    <th mat-header-cell *matHeaderCellDef> IG </th>
+    <td mat-cell *matCellDef="let element"> {{element.ig}} </td>
+  </ng-container> -->
+
+  <!-- Symbol Column -->
+  <!-- <ng-container matColumnDef="portion">
+    <th mat-header-cell *matHeaderCellDef> Portion
+      <br> (en gr) </th>
+    <td mat-cell *matCellDef="let element"> {{element.portion}} </td>
+  </ng-container> -->
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="glucides">
+    <th mat-header-cell *matHeaderCellDef> Glucides </th>
+    <td mat-cell *matCellDef="let element"> {{element.glucides}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="cg">
+    <th mat-header-cell *matHeaderCellDef> CG </th>
+    <td mat-cell *matCellDef="let element"> {{element.cg}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="energie">
+    <th mat-header-cell *matHeaderCellDef> Energie </th>
+    <td mat-cell *matCellDef="let element"> {{element.energie}} </td>
+  </ng-container>
+
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="proteines">
+    <th mat-header-cell *matHeaderCellDef> Proteines </th>
+    <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="lipides">
+    <th mat-header-cell *matHeaderCellDef> Lipides </th>
+    <td mat-cell *matCellDef="let element"> {{element.lipides}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <!-- <ng-container matColumnDef="commentaires">
+    <th mat-header-cell *matHeaderCellDef> Commentaires </th>
+    <td mat-cell *matCellDef="let element"> {{element.commentaires}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table> --> 
+
+<div  class="TEST">
+    
+
+<ng2-smart-table
+    [settings]="settings"
+    [source]="source"
+    (deleteConfirm)="onDeleteConfirm($event)"
+    (editConfirm)="onSaveConfirm($event)"
+    (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
 </div>
-
-

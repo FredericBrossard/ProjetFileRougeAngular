@@ -98,7 +98,21 @@
 
   </table>
 </form>
-<button class="btn btn-sm btn-success" mat-button (click)="cloneRow();">Add a food</button>
+<input class="btn btn-sm btn-success" type="button" value="Add Rows" (click)="addRow()"/>
+<button class="btn btn-sm btn-success" mat-button (click)="addRow();">Add a food</button>
+
+<h1>
+    Creating Dynamic Textboxes (rows)
+  </h1>
+  <input type="button" value="Add Rows" (click)="addRow()"/>
+  <div *ngFor="let item of row; let i=index">
+    <input type="text" name="name{{i}}" [(ngModel)]="item.name"> 
+    <!-- <input type="button" value="Delete Rows" (click)="deleteRow(index)"/> -->
+      <span> {{item.name}}</span>
+      <span>age : {{item.age}}</span>
+      <!-- <input type="button" value="Delete Rows" (click)="delete(item.id)"> -->
+      </div>
+  
 
 
 
