@@ -6,7 +6,11 @@
   color: rgb(46, 236, 46);
 }
 
-
+.contenu-blanc-avec-scroll {
+ width:300px;
+ height:100px;
+ overflow:auto;
+}
 #typeRepas {
   display: flex;
   margin-top: 2px;

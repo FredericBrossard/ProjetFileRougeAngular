@@ -26,7 +26,12 @@
   }
 
   .TEST {
-    width: 50%;
-    height: 50%;
-   
+    width: 80%;
+    /* height: 50%; */
+  
+   }
+
+   .search {
+    border-radius: 5px;
+    padding-left:20px;
   }

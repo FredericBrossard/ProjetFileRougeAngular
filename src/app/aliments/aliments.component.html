@@ -1,3 +1,5 @@
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- <div class="container-fluid">
   <div class="row justify-content-md-left">
     <div class="content with-margin">
@@ -19,7 +21,7 @@
         </div>
         </div> -->
 
-  <!-- <div class="row" id="typeRepas">
+<!-- <div class="row" id="typeRepas">
     <div class="col .mr-auto">
       <div class="content with-margin">
         <mat-card>
@@ -47,58 +49,58 @@
               The actual rendered columns are set as a property on the row definition" -->
 
 
-  <!-- Name Column -->
-  <!-- <ng-container matColumnDef="nameFood">
+<!-- Name Column -->
+<!-- <ng-container matColumnDef="nameFood">
     <th mat-header-cell *matHeaderCellDef> Aliments </th>
     <td mat-cell *matCellDef="let element"> {{element.nameFood}} </td>
   </ng-container> -->
 
-  <!-- Weight Column -->
-  <!-- <ng-container matColumnDef="ig">
+<!-- Weight Column -->
+<!-- <ng-container matColumnDef="ig">
     <th mat-header-cell *matHeaderCellDef> IG </th>
     <td mat-cell *matCellDef="let element"> {{element.ig}} </td>
   </ng-container> -->
 
-  <!-- Symbol Column -->
-  <!-- <ng-container matColumnDef="portion">
+<!-- Symbol Column -->
+<!-- <ng-container matColumnDef="portion">
     <th mat-header-cell *matHeaderCellDef> Portion
       <br> (en gr) </th>
     <td mat-cell *matCellDef="let element"> {{element.portion}} </td>
   </ng-container> -->
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="glucides">
-    <th mat-header-cell *matHeaderCellDef> Glucides </th>
-    <td mat-cell *matCellDef="let element"> {{element.glucides}} </td>
-  </ng-container>
+<!-- Symbol Column -->
+<ng-container matColumnDef="glucides">
+  <th mat-header-cell *matHeaderCellDef> Glucides </th>
+  <td mat-cell *matCellDef="let element"> {{element.glucides}} </td>
+</ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="cg">
-    <th mat-header-cell *matHeaderCellDef> CG </th>
-    <td mat-cell *matCellDef="let element"> {{element.cg}} </td>
-  </ng-container>
+<!-- Symbol Column -->
+<ng-container matColumnDef="cg">
+  <th mat-header-cell *matHeaderCellDef> CG </th>
+  <td mat-cell *matCellDef="let element"> {{element.cg}} </td>
+</ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="energie">
-    <th mat-header-cell *matHeaderCellDef> Energie </th>
-    <td mat-cell *matCellDef="let element"> {{element.energie}} </td>
-  </ng-container>
+<!-- Symbol Column -->
+<ng-container matColumnDef="energie">
+  <th mat-header-cell *matHeaderCellDef> Energie </th>
+  <td mat-cell *matCellDef="let element"> {{element.energie}} </td>
+</ng-container>
 
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="proteines">
-    <th mat-header-cell *matHeaderCellDef> Proteines </th>
-    <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
-  </ng-container>
+<!-- Symbol Column -->
+<ng-container matColumnDef="proteines">
+  <th mat-header-cell *matHeaderCellDef> Proteines </th>
+  <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
+</ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="lipides">
-    <th mat-header-cell *matHeaderCellDef> Lipides </th>
-    <td mat-cell *matCellDef="let element"> {{element.lipides}} </td>
-  </ng-container>
+<!-- Symbol Column -->
+<ng-container matColumnDef="lipides">
+  <th mat-header-cell *matHeaderCellDef> Lipides </th>
+  <td mat-cell *matCellDef="let element"> {{element.lipides}} </td>
+</ng-container>
 
-  <!-- Symbol Column -->
-  <!-- <ng-container matColumnDef="commentaires">
+<!-- Symbol Column -->
+<!-- <ng-container matColumnDef="commentaires">
     <th mat-header-cell *matHeaderCellDef> Commentaires </th>
     <td mat-cell *matCellDef="let element"> {{element.commentaires}} </td>
   </ng-container>
@@ -106,15 +108,16 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-</table> --> 
+</table> -->
 
-<div  class="TEST">
-    
 
-<ng2-smart-table
-    [settings]="settings"
-    [source]="source"
-    (deleteConfirm)="onDeleteConfirm($event)"
-    (editConfirm)="onSaveConfirm($event)"
-    (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
-</div>
+
+<div class="TEST">
+  <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+  <ng2-smart-table [settings]="settings" [source]="source"
+  (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)">
+  </ng2-smart-table>
+ </div>
+
+
+ 
