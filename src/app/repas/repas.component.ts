@@ -1,22 +1,23 @@
-import { FoodRow } from './../food-row';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from './../menu.service';
-
-import { AutocompletionService } from './../autocompletion.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { StateGroup } from './../foods_group';
-
-
-
-
+import { AutoComplFoodsGroup, Foods } from './../foods_group';
+import { FoodRow } from './../food-row';
+import { FoodsService } from '../foods.service';
 
 @Component({
   selector: 'app-repas',
   templateUrl: './repas.component.html',
   styleUrls: ['./repas.component.css']
 })
+
+
+
+
+
+
 export class RepasComponent implements OnInit {
 
   typeMeal = [
@@ -25,26 +26,98 @@ export class RepasComponent implements OnInit {
     { value: 'diner-2', viewValue: 'Diner' }
   ];
 
-  stateForm: FormGroup = this.fb.group({
-    stateGroup: '',
+  foodForm: FormGroup = this.fb.group({
+    foodsGroup: ''
   });
 
-  stateGroupOptions: Observable<StateGroup[]>;
+  foodsGroupOptions: Observable<AutoComplFoodsGroup[]>;
+
+  public autoCFG: AutoComplFoodsGroup[] = [];
 
   foodsRow: FoodRow[] = [
     {
-      nameFood: '',
-      ig: 40,
+      nameFood: null,
+      ig: 0,
       portion: 0,
-      glucides: 2.6,
+      glucides: 0,
       cg: 0,
     }
   ];
 
   // private newRow: any = {};
-  constructor(public menuService: MenuService, public autocompletionService: AutocompletionService, private fb: FormBuilder) { }
+  constructor(public menuService: MenuService,
+    public foodsService: FoodsService,
+    private fb: FormBuilder) { }
 
 
+    ngOnInit() {
+      this.foodsService.getAllFoods()
+          .subscribe((foods) => {
+            this.autoCFG = this.formaterAutoCompl(foods);
+            console.log(this.autoCFG);
+          });
+      this.foodsGroupOptions = this.foodForm.get('foodsGroup').valueChanges
+        .pipe(
+          startWith(''),
+          map(val => this.filterGroup(val)) );
+    }
+
+    filterGroup(val: string): AutoComplFoodsGroup[] {
+      if (val) {
+        return this.autoCFG
+          .map(group => ({ categorie: group.categorie, foods: this._filter(group.foods, val) }))
+          .filter(group => group.foods.length > 0);
+      }
+      return this.autoCFG;
+    }
+    // private _filter(opt: string[], val: string) {
+      private _filter(opt, val) {
+      const filterValue = (typeof val === 'string') ? val.toLowerCase() : val.name.toLowerCase();
+      // return opt.filter(item => item.toLowerCase().startsWith(filterValue));
+      return opt.filter(item => {
+        return (typeof item === 'string') ? item.toLowerCase().startsWith(filterValue) :  item.name.toLowerCase().startsWith(filterValue);
+      } );
+    }
+    displayFn(f): string | undefined {
+      return f ? f.name : undefined;
+    }
+    formaterAutoCompl(f: Foods[]): AutoComplFoodsGroup[] {
+      let i: number;
+      // const autoCFG: AutoComplFoodsGroup[] = [];
+      const autoCFG = [];
+      for (i = 0; i < f.length; i++) {
+        let j: number;
+        const foodsByCat = [];
+        if (f[i]['foodsGroup']) {
+          for (j = i; (j < f.length) && f[j]['foodsGroup']
+            && (f[j]['foodsGroup']['name'] === f[i]['foodsGroup']['name'])
+            ; j++) {
+            // foodsByCat.push(f[j]['name']);
+            foodsByCat.push({name: f[j]['name'], id: f[j]['id'], ig: f[j]['glycIndex'], glucide: f[j]['carboHydrates']});
+          }
+          autoCFG.push({
+            categorie: f[i]['foodsGroup']['name'],
+            foods: foodsByCat
+          });
+          i = j - 1;
+        } else {
+          autoCFG.push({
+            categorie: f[i]['name'],
+            // foods: [ f[i]['name']]
+            foods: [{name: f[i]['name'], id: f[i]['id'], ig: f[i]['glycIndex'], glucide: f[i]['carboHydrates']}]
+          });
+        }
+      }
+      return autoCFG;
+    }
+    getFood(i: number) {
+       console.log('Methode getFood ', this.foodsRow[i]);
+      //  setTimeout( () => {this.foodsRow[i].ig = this.foodsRow[i].nameFood.glycIndex; }, 0);
+      // if (this.foodsRow[i].nameFood) {
+         this.foodsRow[i].ig = this.foodsRow[i].nameFood.ig;
+          this.foodsRow[i].glucides = this.foodsRow[i].nameFood.glucide;
+      // }
+    }
 
   calculCG(i: number) {
     console.log('ch=' + (this.foodsRow[i].ig * (this.foodsRow[i].glucides * this.foodsRow[i].portion) / 100) / 100);
@@ -54,25 +127,19 @@ export class RepasComponent implements OnInit {
   }
 
 
-
   addFoodRow() {
     const newRow = {
-      nameFood: '',
-      ig: 40,
+      nameFood: null,
+      ig: 0 ,
       portion: 0,
-      glucides: 2.6,
+      glucides: 0,
       cg: 0,
     };
     this.foodsRow.push(newRow);
-    // this.newRow = {};
-  }
-
+   }
   deleteFoodRow(i) {
     this.foodsRow.splice(i, 1);
   }
-
-
-
   getSum(i: number): number {
     let sum = 0;
     for (i = 0; i < this.foodsRow.length; i++) {
@@ -80,6 +147,32 @@ export class RepasComponent implements OnInit {
     }
     return sum;
   }
+
+  // addFoodRow() {
+  //   const newRow = {
+  //     nameFood: '',
+  //     ig: 40,
+  //     portion: 0,
+  //     glucides: 2.6,
+  //     cg: 0,
+  //   };
+  //   this.foodsRow.push(newRow);
+  //   // this.newRow = {};
+  // }
+
+  // deleteFoodRow(i) {
+  //   this.foodsRow.splice(i, 1);
+  // }
+
+
+
+  // getSum(i: number): number {
+  //   let sum = 0;
+  //   for (i = 0; i < this.foodsRow.length; i++) {
+  //     sum += this.foodsRow[i].cg;
+  //   }
+  //   return sum;
+  // }
 
   //  cloneRow() {
   //     const row = document.getElementById('rowToClone'); // find row to copy
@@ -95,45 +188,11 @@ export class RepasComponent implements OnInit {
 
 
 
-
-  ngOnInit() {
-    this.stateGroupOptions = this.stateForm.get('stateGroup').valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filterGroup(val))
-      );
-
-    this.row.push({
-      id: '',
-      name: '',
-      age: ''
-    });
-  }
   // tslint:disable-next-line:member-ordering
   public row: any = [{}];
 
   // Add New Row
-  addRow() {
-    this.row.push({});
-  }
-
-  // constructor(private fb: FormBuilder) { }
-  filterGroup(val: string): StateGroup[] {
-    if (val) {
-      return this.autocompletionService.stateGroups
-        .map(group => ({ letter: group.letter, names: this._filter(group.names, val) }))
-        .filter(group => group.names.length > 0);
-    }
-
-    return this.autocompletionService.stateGroups;
-  }
-
-  private _filter(opt: string[], val: string) {
-    const filterValue = val.toLowerCase();
-    return opt.filter(item => item.toLowerCase().startsWith(filterValue));
-  }
-}
-
-
-
-
+//   addRow() {
+//     this.row.push({});
+//   }
+ }

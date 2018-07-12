@@ -1,10 +1,14 @@
 export interface FoodRow {
-    // pour rendre champ non obligatoire ?
-    nameFood: string;
-    ig: number;
-    portion: number;
-    glucides: number;
-    cg: number;
-   }
+    nameFood:  FoodResult ;
+   ig: number;
+   portion: number;
+   glucides: number;
+   cg: number;
+  }
 
-
+  export interface FoodResult {
+   name: string;
+   id: number;
+   ig: number;
+   glucide: number;
+  }

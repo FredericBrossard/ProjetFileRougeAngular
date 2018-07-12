@@ -28,6 +28,7 @@ import {MatButtonModule} from '@angular/material/button';
 // tslint:disable-next-line:max-line-length
 import { MatToolbarModule, MatCardModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LineFoodComponent } from './line-food/line-food.component';
 
 
 
@@ -79,6 +80,7 @@ component: Page404Component  }
     ConnexionComponent,
     ProfilComponent,
     Page404Component,
+    LineFoodComponent,
 
     ],
 
