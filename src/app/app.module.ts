@@ -17,7 +17,7 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { Page404Component } from './page404/page404.component';
-import { MatChipsModule, MatTableModule } from '@angular/material';
+import { MatChipsModule, MatTableModule, MatIconModule } from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 
 
@@ -82,8 +82,6 @@ component: Page404Component  }
 
     ],
 
-
-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -103,7 +101,10 @@ component: Page404Component  }
     MatTableModule,
     MatButtonModule,
     Ng2SmartTableModule,
+    MatIconModule,
             ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

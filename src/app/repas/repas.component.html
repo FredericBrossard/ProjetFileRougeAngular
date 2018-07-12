@@ -3,42 +3,34 @@
 </div>
 
 <div id="typeRepas">
-  <div>
-    <h4>Votre type de repas</h4>
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-select placeholder="Saisir le type de repas">
-        <mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
-          {{ typem.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+
+  <mat-form-field>
+    <mat-select placeholder="Saisir le type de repas">
+      <mat-option *ngFor="let typem of typeMeal" [value]="typem.value">
+        {{ typem.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </div>
-
-
-
-
-
 
 <div>
 
   <table>
     <thead>
       <tr>
-        <th class="large">Aliments</th>
-        <th class="small">IG</th>
-        <th class="small">Portion
+        <th>Aliments</th>
+        <th>IG</th>
+        <th>Portion
           <br> (en gr)</th>
-        <th class="small">Glucides</th>
-        <th class="small">CG</th>
-        <th class="small">Supprimer</th>
+        <th>Glucides</th>
+        <th>CG</th>
+        <th>Supprimer</th>
 
       </tr>
     </thead>
 
-    <tbody>
+    <tbody data-spy="scroll">
       <tr *ngFor="let foodRow of foodsRow ; let i = index">
         <td>
           <!-- {{foodRow | json}} -->
@@ -59,38 +51,53 @@
         </td>
         <td>
           <label for="ig"></label>
-          <input [(ngModel)]="foodRow.ig" type="number" name="ig" id="ig" step="0.01" min="0">
-        </td>
-        <td class="small">
-          <label for="portion"></label>
-          <input [(ngModel)]="foodRow.portion" (change)="calculCG(i)" type="number" name="portion" id="portion" step="0.01" min="0">
-        </td>
-        <td class="small">
-          <label for="glucides"></label>
-          <input [(ngModel)]="foodRow.glucides" type="number" name="glucides" id="glucides" step="0.01" min="0">
-        </td>
-        <td class="coin">
-          <label></label>
-          <!-- <input type="submit">  -->
-          <input disabled [(ngModel)]="foodRow.cg" type="number" name="glucides" id="glucides" step="0.01" min="0">
-          <!-- <output  for="ig portion glucides" name="cg"> </output> -->
+          <input [(ngModel)]="foodRow.ig" type="number" name="ig" id="ig" step="0.01" min="0" class="bordure">
         </td>
         <td>
-          <button class="btn btn-default" type="button" (click)="deleteFoodRow(i)">Delete</button>
+          <label for="portion"></label>
+          <input [(ngModel)]="foodRow.portion" (change)="calculCG(i)" type="number" class="bordure" name="portion" id="portion" step="0.01"
+            min="0">
         </td>
+        <td>
+          <label for="glucides"></label>
+          <input [(ngModel)]="foodRow.glucides" type="number" class="bordure" name="glucides" id="glucides" step="0.01" min="0">
+        </td>
+        <td>
+          <label></label>
 
+          <input disabled [(ngModel)]="foodRow.cg" type="number" class="bordure" name="glucides" id="glucides" step="0.01" min="0">
+
+        </td>
+        <td>
+          <button mat-icon-button>
+            <mat-icon aria-label="Delete" (click)="deleteFoodRow(i)">delete</mat-icon>
+          </button>
+
+
+        </td>
       </tr>
     </tbody>
     <tfoot>
+      <tr>&nbsp;</tr>
       <tr>
-        <td colspan="5" style="text-align: left;">
-          <button class="btn btn-default" type="button" (click)="addFoodRow()">Add</button>
-        </td>
-
+        <td> &nbsp; </td>
+        <td> &nbsp; </td>
+        <td> &nbsp; </td>
+        <td>CG totale du repas</td>
         <td>{{ getSum() }} </td>
-
+        <td> &nbsp; </td>
       </tr>
-
     </tfoot>
   </table>
 </div>
+&nbsp;
+<div>
+  <button type="button" class="btn btn-success" (click)="addFoodRow()">Add food</button>
+</div>
+&nbsp;
+<form class="form-group">
+  <div>
+    <label for="exampleFormControlTextarea1">Commentaire sur le repas :</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>

@@ -6,32 +6,37 @@
   color: rgb(46, 236, 46);
 }
 
-.contenu-blanc-avec-scroll {
- width:300px;
- height:100px;
- overflow:auto;
-}
+
 #typeRepas {
-  display: flex;
+  display: flex; 
   margin-top: 2px;
-  margin-left: 5px;
-  margin-bottom: 10px;
+  margin-left: 2px;
+  margin-bottom: 2px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
+  font-size: 10px;
 }
+ 
 
 /* Structure */
 
 table {
-  /* width: 100%; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 12px;
+  border-collapse: collapse;
+  width: 80%;
+  font-weight: bold;
 }
 
-th {
-  background-color: #4CAF50;
-  color: white;
+th, td,tfoot {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
+
+th, tfoot {
+  color:cornflowerblue;
+ }
+ 
 
 mat-form-field {
   font-size: 14px;
@@ -42,24 +47,15 @@ form {
   display: inline;
 }
 
-/* .autoCompletion {
-  width: 90%;
-} */
+.bordure {
+ border: hidden;
+ text-align: center
+ }
+ .form-group {
+  color:cornflowerblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  width: 80%;
+  font-weight: bold;
+ }
 
-.coin {
-  border: 0.5px solid grey;
-  background: papayawhip;
- 
-}
-
-/* .comment {
- overflow: auto;
-} */
-
-/* .large {
-  width: 50%;
-}
-
-.small {
-  width:auto;
-} */
