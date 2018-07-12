@@ -35,7 +35,7 @@ import { LineFoodComponent } from './line-food/line-food.component';
 
 const routes: Routes = [
   { path: '',
-   redirectTo: 'repas', pathMatch: 'full' },
+   redirectTo: 'aliments', pathMatch: 'full' },
    {
     path: 'repas',
     component: RepasComponent

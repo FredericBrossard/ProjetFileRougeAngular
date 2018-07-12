@@ -1,6 +1,8 @@
+import { FoodsService } from './../foods.service';
 import { MatTableDataSource } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
+import { Foods, ListFoods } from '../foods_group';
 
 
 
@@ -14,7 +16,7 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 })
 
-export class AlimentsComponent {
+export class AlimentsComponent implements OnInit {
 
 
 
@@ -45,7 +47,13 @@ export class AlimentsComponent {
       display: true,
     },
     columns: {
-      nameAliment: {
+      id: {
+        title: 'Identifiant',
+        editable: false,
+        sort: true,
+        filter: true,
+      },
+      name: {
         title: 'Aliment',
         editable: true,
         sort: true,
@@ -55,17 +63,28 @@ export class AlimentsComponent {
           type: 'textarea',
         },
       },
-      ig: {
+      categorie: {
+        title: 'Catégorie',
+        editable: true,
+        sort: true,
+        filter: true,
+      },
+      glycIndex: {
         title: 'IG (pour 100gr)   ',
         editable: true,
         filter: false,
       },
-      portion: {
-        title: 'Portion (en gr)',
-        editable: true,
+      energie: {
+        title: 'Energie',
+        editable: false,
         filter: false,
       },
-      glucides: {
+      // portion: {
+      //   title: 'Portion (en gr)',
+      //   editable: true,
+      //   filter: false,
+      // },
+      carboHydrates: {
         title: 'Glucides',
         editable: true,
         filter: false,
@@ -76,22 +95,17 @@ export class AlimentsComponent {
         editable: false,
         filter: false,
       },
-      energie: {
-        title: 'Energie',
-        editable: false,
-        filter: false,
-      },
-      proteines: {
+      proteins: {
         title: 'Proteines',
         editable: false,
         filter: false,
       },
-      lipides: {
+      lipids: {
         title: 'Lipides',
         editable: false,
         filter: false,
       },
-      commentaires: {
+      comments: {
         title: 'Commentaires',
         editable: true,
         editor: {
@@ -105,22 +119,47 @@ export class AlimentsComponent {
     },
   };
 
-  data = [
-    {
-      id: 1,
-      name: 'Leanne Graham',
-      username: 'Bret',
-      email: 'Sincere@april.biz',
-      notShownField: true,
 
-    },
-
-  ];
 
   source: LocalDataSource;
 
-  constructor() {
-    this.source = new LocalDataSource(this.data);
+  constructor(public foodsService: FoodsService) {
+  }
+
+  ngOnInit() {
+    this.foodsService.getAllFoods()
+      .subscribe((foods) => {
+        this.source = new LocalDataSource(this.formaterSource(foods));
+      });
+  }
+
+  // Permet de formater la donnée source utilisé comme propriété de ng2-smart-table
+  formaterSource(f: Foods[]): ListFoods[] {
+
+    const listFoods: ListFoods[] = [];
+
+    let i: number;
+    for (i = 0; i < f.length; i++) {
+      let cat: string;
+      if ((f[i]['foodsGroup'] !== null)
+        && (f[i]['foodsGroup'] !== undefined)) {
+        cat = f[i]['foodsGroup']['name'];
+      } else { cat = f[i]['name']; }
+
+      listFoods.push(
+        {
+          id: f[i]['id'],
+          name: f[i]['name'],
+          categorie: cat,
+          glycIndex: f[i]['glycIndex'],
+          energy: f[i]['energy'],
+          carboHydrates: f[i]['carboHydrates'],
+          proteins: f[i]['proteins'],
+          lipids: f[i]['lipids'],
+          comment: f[i]['comment']
+        });
+    }
+    return listFoods;
   }
 
   onDeleteConfirm(event) {
