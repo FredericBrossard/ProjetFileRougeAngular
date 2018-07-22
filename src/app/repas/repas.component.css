@@ -1,3 +1,15 @@
+
+   .cellulecg {
+    border-width:1px; 
+    border-style: solid;
+    border-color: rgb(212, 209, 209);
+    border-radius: 5px;
+    background-color: white;
+    height: 35px;
+    width: 100px;
+    text-align: start;
+  }
+
 /* .center {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -6,7 +18,8 @@
   color: rgb(46, 236, 46); */
 /* } */
 
-#typeRepas {
+
+/* #typeRepas {
   display: flex;
   margin-top: 2px;
   margin-left: 2px;
@@ -14,33 +27,33 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 10px;
   margin-left: 10px;
-}
+} */
 
 /* Structure */
 
-table {
+/* table {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12px;
+  font-size: 12px; 
   border-collapse: collapse;
-  width: 80%;
+ width: 80%; 
   font-weight: bold;
   margin-left: 15px;
-}
+}  */
 
 /* .CG {
   background-color: #FDE9E0;
 } */
 
 
-th,
+/* th,
 td,
 tfoot {
   padding: 8px;
   text-align: center;
   border-bottom: 1px solid #ddd;
-}
+} */
 
-#alignLeft {
+/* #alignLeft {
   text-align: center;
 }
 
@@ -74,4 +87,4 @@ form {
   width: 80%;
   font-weight: bold;
   margin-left: 15px;
-}
+} */

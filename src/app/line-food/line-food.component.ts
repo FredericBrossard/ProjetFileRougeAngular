@@ -27,6 +27,7 @@ export class LineFoodComponent implements OnInit {
   @Input() index: number;
   @Output() deleted = new EventEmitter<number>();
 
+
   constructor(public menuService: MenuService,
     public foodsService: FoodsService,
     private fb: FormBuilder) { }
@@ -78,13 +79,15 @@ export class LineFoodComponent implements OnInit {
           foodsByCat.push({ name: f[j]['name'], id: f[j]['id'], ig: f[j]['glycIndex'], glucide: f[j]['carboHydrates'] });
         }
         autoCFG.push({
-          categorie: f[i]['foodsGroup']['name'],
+          // categorie: f[i]['foodsGroup']['name'],
+          categorie: 'Catégorie non renseignée',
           foods: foodsByCat
         });
         i = j - 1;
       } else {
         autoCFG.push({
-          categorie: f[i]['name'],
+          // categorie: f[i]['name'],
+          categorie: 'Catégorie non renseignée',
           // foods: [ f[i]['name']]
           foods: [{ name: f[i]['name'], id: f[i]['id'], ig: f[i]['glycIndex'], glucide: f[i]['carboHydrates'] }]
         });
@@ -103,8 +106,17 @@ export class LineFoodComponent implements OnInit {
   }
 
   calculCG(i: number) {
-    console.log('ch=' + (this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100);
+
+    const resultat = Math.round((this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100);
+
+    console.log('charge gly=' + ((this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100).toFixed(2));
+    console.log('resultat:' + resultat);
+
+    // this.foodRow.cg = (this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100;
+
     this.foodRow.cg = (this.foodRow.ig * (this.foodRow.glucides * this.foodRow.portion) / 100) / 100;
+    this.foodRow.cg = Number.parseFloat(Number(this.foodRow.cg).toFixed(2));
+
     // return (this.foodsRow[i].ig * (this.foodsRow[i].glucides * this.foodsRow[i].portion) / 100) / 100;
     // cg.value= (ig.value * (glucides.value* portion.value)/100)/100
   }

@@ -45,7 +45,7 @@
 <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
 
-  <!--- Note that these columns can be defined in any order.
+   Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
 
@@ -69,35 +69,35 @@
   </ng-container> -->
 
 <!-- Symbol Column -->
-<ng-container matColumnDef="glucides">
+<!-- <ng-container matColumnDef="glucides">
   <th mat-header-cell *matHeaderCellDef> Glucides </th>
   <td mat-cell *matCellDef="let element"> {{element.glucides}} </td>
 </ng-container>
 
-<!-- Symbol Column -->
+Symbol Column 
 <ng-container matColumnDef="cg">
   <th mat-header-cell *matHeaderCellDef> CG </th>
   <td mat-cell *matCellDef="let element"> {{element.cg}} </td>
 </ng-container>
 
-<!-- Symbol Column -->
+Symbol Column 
 <ng-container matColumnDef="energie">
   <th mat-header-cell *matHeaderCellDef> Energie </th>
   <td mat-cell *matCellDef="let element"> {{element.energie}} </td>
 </ng-container>
 
 
-<!-- Symbol Column -->
+Symbol Column 
 <ng-container matColumnDef="proteines">
   <th mat-header-cell *matHeaderCellDef> Proteines </th>
   <td mat-cell *matCellDef="let element"> {{element.proteines}} </td>
 </ng-container>
 
-<!-- Symbol Column -->
+Symbol Column 
 <ng-container matColumnDef="lipides">
   <th mat-header-cell *matHeaderCellDef> Lipides </th>
   <td mat-cell *matCellDef="let element"> {{element.lipides}} </td>
-</ng-container>
+</ng-container> -->
 
 <!-- Symbol Column -->
 <!-- <ng-container matColumnDef="commentaires">
@@ -114,8 +114,11 @@
 
 <div class="TEST">
   <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
-  <ng2-smart-table [settings]="settings" [source]="source"
-  (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)">
+  <ng2-smart-table [settings]="settings" 
+  [source]="source"
+  (deleteConfirm)="onDeleteConfirm($event)" 
+  (editConfirm)="onSaveConfirm($event)" 
+  (createConfirm)="onCreateConfirm($event)" >
   </ng2-smart-table>
  </div>
 

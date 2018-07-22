@@ -1,15 +1,55 @@
-<mat-toolbar fxLayout="column" fxLayoutAlign="center">
-    <mat-toolbar-row class="toolbar" fxLayoutAlign="space-around">
-    </mat-toolbar-row>
-  
-    <mat-toolbar-row class="titre" fxLayoutAlign="center">
-      Nutrition & Wellness !
-    </mat-toolbar-row>
-    <mat-toolbar-row style="font-style: bold !important"  fxLayoutAlign="space-around">
-      <a *ngFor="let m of menuService.getList('header')" [style.color]="menuService.selectedMenu.name === m.name ? 'pink' : 'grey'"
-        (click)="selectMenu(m, $event)" routerLink="{{m.path}}">
-        {{m.name}}
-      </a>
-    </mat-toolbar-row>
-  </mat-toolbar>
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)"> -->
+    <mat-toolbar fxLayout="column" fxLayoutAlign="center">
+      <mat-toolbar-row class="toolbar" fxLayoutAlign="space-around">
+      </mat-toolbar-row>
 
+      <mat-toolbar-row class="titre" fxLayoutAlign="center">
+        Nutrition & Wellness !
+      </mat-toolbar-row>
+      <mat-toolbar-row style="font-style: bold !important" fxLayoutAlign="space-around">
+        <a *ngFor="let m of menuService.getList('header')" [style.color]="menuService.selectedMenu.name === m.name ? 'pink' : 'grey'"
+          (click)="selectMenu(m, $event)" routerLink="{{m.path}}">
+          {{m.name}}
+        </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+    <!-- </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #drawer
+      class="sidenav"
+      fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/connexion">connexion</a>
+        <a mat-list-item href="#">Daily Reporting</a>
+        <a mat-list-item href="#">Developpeur Tools</a>
+        <a mat-list-item routerLink="/repas">Repas</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+         
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Etat des Applications Patrimoine Distrib' & Démat'</span>
+      </mat-toolbar>
+     
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container> -->

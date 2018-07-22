@@ -17,7 +17,7 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { Page404Component } from './page404/page404.component';
-import { MatChipsModule, MatTableModule, MatIconModule } from '@angular/material';
+import { MatChipsModule, MatTableModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 
 
@@ -35,7 +35,7 @@ import { LineFoodComponent } from './line-food/line-food.component';
 
 const routes: Routes = [
   { path: '',
-   redirectTo: 'aliments', pathMatch: 'full' },
+   redirectTo: 'connexion', pathMatch: 'full' },
    {
     path: 'repas',
     component: RepasComponent
@@ -103,6 +103,9 @@ component: Page404Component  }
     MatTableModule,
     MatButtonModule,
     Ng2SmartTableModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
     MatIconModule,
             ],
 

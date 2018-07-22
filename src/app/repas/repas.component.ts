@@ -1,3 +1,4 @@
+import { Repas } from './../core/repas';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from './../menu.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -6,6 +7,7 @@ import { startWith, map } from 'rxjs/operators';
 import { AutoComplFoodsGroup, Foods } from './../foods_group';
 import { FoodRow } from './../food-row';
 import { FoodsService } from '../foods.service';
+import { RepasCRUDService } from 'src/app/repas-crud.service';
 
 @Component({
   selector: 'app-repas',
@@ -44,10 +46,13 @@ export class RepasComponent implements OnInit {
     }
   ];
 
+  repas: Repas;
+
   // private newRow: any = {};
   constructor(public menuService: MenuService,
     public foodsService: FoodsService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    public repasService: RepasCRUDService) { }
 
 
     ngOnInit() {
@@ -145,7 +150,30 @@ export class RepasComponent implements OnInit {
     for (i = 0; i < this.foodsRow.length; i++) {
       sum += this.foodsRow[i].cg;
     }
+// affichage sur 2 decimales apres la virgule
+    sum = Number.parseFloat(Number(sum).toFixed(2));
+
     return sum;
+  }
+
+    createRepas() {
+        // creation requete post de creation pour le controller du backend
+        this.repas = {
+          typeRepas: 'TypeRepas',
+          nameRepas: 'MonRepas',
+          nameAliment: 'NonAliment',
+          glycIndex: 23,
+          portion: 12,
+          carboHydrates: 44,
+          chargeGlyc: 26,
+          comment: 'Commentaire'
+
+        };
+        console.log('methode createRepas, nameRepas' + this.repas.nameRepas, + 'comment:' + this.repas.comment);
+        this.repasService.create(this.repas).subscribe ( (repas1: Repas) => {
+          this.repas = repas1;
+        });
+
   }
 
   // addFoodRow() {
@@ -196,3 +224,5 @@ export class RepasComponent implements OnInit {
 //     this.row.push({});
 //   }
  }
+
+
